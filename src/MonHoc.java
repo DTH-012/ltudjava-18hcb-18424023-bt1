@@ -1,19 +1,8 @@
 
-public class ThoiKhoaBieu {
-	private String Lop;
+public class MonHoc {
 	private String MaMH;
 	private String TenMH;
 	private String PhongHoc;
-	
-	public String getLop() {
-		return this.Lop;
-	}
-	
-	public void setLop(String lop) {
-		if(lop != null && !lop.isEmpty()) {
-			this.Lop = lop;
-		}
-	}
 	
 	public String getMaMH() {
 		return this.MaMH;
