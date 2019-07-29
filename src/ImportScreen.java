@@ -84,7 +84,7 @@ public class ImportScreen extends JFrame
         	fileData = new FileData();
         	try {
         		lopHoc = fileData.readDSSV(fileChoosen.getPath());
-        		fileData.writeData("data\\LopHoc\\", lopHoc.getTenLop(), lopHoc.getDSSV());
+        		fileData.writeData("data\\LopHoc\\", lopHoc.getTenLop(), false, lopHoc.getDSSV());
 
         		String message = "Import thanh cong.";
         		JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",

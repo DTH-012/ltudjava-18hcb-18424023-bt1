@@ -18,7 +18,7 @@ public class FileData {
 			while(s.hasNextLine()) {
 				String line = s.nextLine();
 				String[] data = line.split(",");
-				SinhVien sv = new SinhVien(Integer.parseInt(data[0]),data[1],data[2],data[3]);
+				SinhVien sv = new SinhVien(data[0],data[1],data[2],data[3]);
 				if(!lopHoc.ThemSV(sv)) {
 					return null;
 				}
@@ -28,11 +28,12 @@ public class FileData {
 		return lopHoc;
 	}
 	
-	public <T> boolean writeData(String pathFolder,String fileName, ArrayList<T> DataList) throws IOException {
+	public <T> boolean writeData(String pathFolder,String fileName, boolean isAppend, 
+			ArrayList<T> DataList) throws IOException {
 		FileWriter fw;
 		try 
 		{
-			fw = new FileWriter(pathFolder+fileName+".csv");
+			fw = new FileWriter(pathFolder+fileName+".csv", isAppend);
 		}
 		catch(IOException exc) 
 		{
@@ -46,5 +47,10 @@ public class FileData {
 		
 		fw.close();
 		return true;
+	}
+	
+	public static String getFileName(String fileName) {
+		return fileName.replaceFirst("[.][^.]+$", "");
+		
 	}
 }
