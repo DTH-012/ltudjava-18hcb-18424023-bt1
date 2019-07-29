@@ -48,6 +48,7 @@ public class MainScreen extends JFrame implements ActionListener{
 		CreateTable(columnNames);
 
 		btnImport.addActionListener(this);
+		btnAdd.addActionListener(this);
 		
 	}
 	
@@ -76,5 +77,31 @@ public class MainScreen extends JFrame implements ActionListener{
         	importScreen.setSize(700, 600);
         	importScreen.setVisible(true);
         }
+        else if(e.getSource() == btnAdd) {
+    		ArrayList<String> classList = getClassList();
+    		if(classList.isEmpty()) {
+    			String message = "Chua import lop hoc nao ca!";
+        		JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",
+        		        JOptionPane.WARNING_MESSAGE);
+        		return;
+    		}
+        	AddingForm addingForm = new AddingForm(classList);
+        	addingForm.setSize(700, 600);
+        	addingForm.setVisible(true);
+        }
     }
+	
+	private ArrayList<String> getClassList() {
+		ArrayList<String> classList = new ArrayList<String>();
+		File folder = new File("data\\LopHoc\\");
+		File[] listOfFiles = folder.listFiles();
+
+		for (File file : listOfFiles) {
+		    if (file.isFile()) {
+		    	classList.add(FileData.getFileName(file.getName()));
+		    }
+		}
+		
+		return classList;
+	}
 }
