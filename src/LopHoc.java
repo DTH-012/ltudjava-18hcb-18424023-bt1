@@ -23,7 +23,7 @@ public class LopHoc {
 	}
 	
 	public boolean ThemSV(SinhVien newSV) {
-		SinhVien sv = DSSV.stream().filter(x -> x.getMSSV() == newSV.getMSSV()).findFirst().orElse(null);
+		SinhVien sv = DSSV.stream().filter(x -> x.getMSSV().equals(newSV.getMSSV())).findFirst().orElse(null);
 		if(sv == null) {
 			DSSV.add(newSV);
 			return true;
