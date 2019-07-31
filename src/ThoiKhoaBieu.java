@@ -21,4 +21,14 @@ public class ThoiKhoaBieu {
 	public void setDSMH(ArrayList<MonHoc> dSMH) {
 		DSMH = dSMH;
 	}
+	
+	public boolean ThemMH(MonHoc newMH) {
+		MonHoc mh = DSMH.stream().filter(x -> x.getMaMH().equals(newMH.getMaMH())).findFirst().orElse(null);
+		if(mh == null) {
+			DSMH.add(newMH);
+			return true;
+		}
+		
+		return false;
+	}
 }

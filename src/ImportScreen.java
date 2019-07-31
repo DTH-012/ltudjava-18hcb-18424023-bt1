@@ -83,9 +83,17 @@ public class ImportScreen extends JFrame
         else if (e.getSource() == btnSave) {
         	fileData = new FileData();
         	try {
-        		lopHoc = fileData.readDSSV(fileChoosen.getPath());
-        		fileData.writeData("data\\LopHoc\\", lopHoc.getTenLop(), false, lopHoc.getDSSV());
-
+        		if(radLop.isSelected()) {
+	        		lopHoc = fileData.readDSSV(fileChoosen.getPath());
+	        		fileData.writeData("data\\LopHoc\\", lopHoc.getTenLop(), false, lopHoc.getDSSV());
+        		}
+        		else if(radTKB.isSelected()) {
+        			TKB = fileData.readTKB(fileChoosen.getPath());
+	        		fileData.writeData("data\\TKB\\", TKB.getTenLop(), false, TKB.getDSMH());
+        		}
+        		else {
+        			
+        		}
         		String message = "Import thanh cong.";
         		JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",
         		        JOptionPane.INFORMATION_MESSAGE);

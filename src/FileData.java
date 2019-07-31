@@ -53,4 +53,23 @@ public class FileData {
 		return fileName.replaceFirst("[.][^.]+$", "");
 		
 	}
+	
+	public ThoiKhoaBieu readTKB(String path) throws Exception {
+		ThoiKhoaBieu tkb = new ThoiKhoaBieu();
+		File file = new File(path);
+		if(file.exists()) {
+			Scanner s = new Scanner(file);
+			tkb.setTenLop(file.getName().replaceFirst("[.][^.]+$", ""));
+			while(s.hasNextLine()) {
+				String line = s.nextLine();
+				String[] data = line.split(",");
+				MonHoc mh = new MonHoc(data[0],data[1],data[2]);
+				if(!tkb.ThemMH(mh)) {
+					return null;
+				}
+			}
+		}
+		
+		return tkb;
+	}
 }

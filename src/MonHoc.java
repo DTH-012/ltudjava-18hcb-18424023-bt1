@@ -4,6 +4,18 @@ public class MonHoc {
 	private String TenMH;
 	private String PhongHoc;
 	
+	public MonHoc() {
+		this.MaMH = "";
+		this.TenMH = "";
+		this.PhongHoc = "";
+	}
+	
+	public MonHoc(String maMH, String tenMH, String phongHoc) {
+		this.MaMH = maMH;
+		this.TenMH = tenMH;
+		this.PhongHoc = phongHoc;
+	}
+	
 	public String getMaMH() {
 		return this.MaMH;
 	}
@@ -32,5 +44,10 @@ public class MonHoc {
 		if(phongHoc != null && !phongHoc.isEmpty()) {
 			this.PhongHoc = phongHoc;
 		}
+	}
+
+	@Override
+	public String toString() {
+		return this.MaMH.toString() + "," + this.TenMH.toString() + "," + this.PhongHoc;
 	}
 }
