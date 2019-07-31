@@ -93,14 +93,7 @@ public class MainScreen extends JFrame implements ActionListener{
 	
 	private ArrayList<String> getClassList() {
 		ArrayList<String> classList = new ArrayList<String>();
-		File folder = new File("data\\LopHoc\\");
-		File[] listOfFiles = folder.listFiles();
-
-		for (File file : listOfFiles) {
-		    if (file.isFile()) {
-		    	classList.add(FileData.getFileName(file.getName()));
-		    }
-		}
+		classList = FileData.getFilenameInFolder("data\\LopHoc\\");
 		
 		return classList;
 	}

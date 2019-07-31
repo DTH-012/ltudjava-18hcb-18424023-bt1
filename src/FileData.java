@@ -20,11 +20,13 @@ public class FileData {
 				String[] data = line.split(",");
 				SinhVien sv = new SinhVien(data[0],data[1],data[2],data[3]);
 				if(!lopHoc.ThemSV(sv)) {
+					file.exists();
 					return null;
 				}
 			}
 		}
-		
+
+		file.exists();
 		return lopHoc;
 	}
 	
@@ -71,5 +73,19 @@ public class FileData {
 		}
 		
 		return tkb;
+	}
+	
+	public static ArrayList<String> getFilenameInFolder(String path) {
+		ArrayList<String> fileNames = new ArrayList<String>();
+		File folder = new File(path);
+		File[] listOfFiles = folder.listFiles();
+
+		for (File file : listOfFiles) {
+		    if (file.isFile()) {
+		    	fileNames.add(FileData.getFileName(file.getName()));
+		    }
+		}
+		
+		return fileNames;
 	}
 }
