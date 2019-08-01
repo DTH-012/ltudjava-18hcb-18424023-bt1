@@ -49,6 +49,7 @@ public class MainScreen extends JFrame implements ActionListener{
 
 		btnImport.addActionListener(this);
 		btnAdd.addActionListener(this);
+		btnViewClass.addActionListener(this);
 		
 	}
 	
@@ -88,6 +89,18 @@ public class MainScreen extends JFrame implements ActionListener{
         	AddingForm addingForm = new AddingForm(classList);
         	addingForm.setSize(700, 600);
         	addingForm.setVisible(true);
+        }
+        else if(e.getSource() == btnViewClass) {
+        	ArrayList<String> classList = getClassList();
+    		if(classList.isEmpty()) {
+    			String message = "Chua import lop hoc nao ca!";
+        		JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",
+        		        JOptionPane.WARNING_MESSAGE);
+        		return;
+    		}
+    		ViewClassScreen viewClassScreen = new ViewClassScreen();
+    		viewClassScreen.setSize(700, 600);
+    		viewClassScreen.setVisible(true);
         }
     }
 	

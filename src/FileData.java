@@ -9,7 +9,7 @@ public class FileData {
 		super();
 	}
 	
-	public LopHoc readDSSV(String path) throws Exception{
+	public static LopHoc readDSSV(String path) throws Exception{
 		LopHoc lopHoc = new LopHoc();
 		File file = new File(path);
 		if(file.exists()) {
