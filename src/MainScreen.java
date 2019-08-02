@@ -50,6 +50,7 @@ public class MainScreen extends JFrame implements ActionListener{
 		btnImport.addActionListener(this);
 		btnAdd.addActionListener(this);
 		btnViewClass.addActionListener(this);
+		btnViewSchedule.addActionListener(this);
 		
 	}
 	
@@ -101,6 +102,18 @@ public class MainScreen extends JFrame implements ActionListener{
     		ViewClassScreen viewClassScreen = new ViewClassScreen();
     		viewClassScreen.setSize(700, 600);
     		viewClassScreen.setVisible(true);
+        }
+        else if(e.getSource() == btnViewSchedule) {
+        	ArrayList<String> classList = getClassList();
+    		if(classList.isEmpty()) {
+    			String message = "Chua import tkb lop hoc nao ca!";
+        		JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",
+        		        JOptionPane.WARNING_MESSAGE);
+        		return;
+    		}
+    		ViewTKBScreen viewTKBScreen = new ViewTKBScreen();
+    		viewTKBScreen.setSize(700, 600);
+    		viewTKBScreen.setVisible(true);
         }
     }
 	

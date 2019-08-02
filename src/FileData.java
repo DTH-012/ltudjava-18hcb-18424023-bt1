@@ -56,7 +56,7 @@ public class FileData {
 		
 	}
 	
-	public ThoiKhoaBieu readTKB(String path) throws Exception {
+	public static ThoiKhoaBieu readTKB(String path) throws Exception {
 		ThoiKhoaBieu tkb = new ThoiKhoaBieu();
 		File file = new File(path);
 		if(file.exists()) {
