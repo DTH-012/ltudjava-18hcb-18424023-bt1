@@ -1,23 +1,31 @@
 
 public class Diem {
-	private String Lop;
-	private int MSSV;
+	private String MSSV;
 	private String HoTen;
 	private float DiemGK;
 	private float DiemCK;
 	private float DiemKhac;
 	private float DiemTong;
-	public String getLop() {
-		return Lop;
+	
+	public Diem() {
+		
 	}
-	public void setLop(String lop) {
-		Lop = lop;
+	
+	public Diem(String mssv, String hoTen, float diemGK, 
+			float diemCK, float diemKhac, float diemTong) {
+		this.MSSV = mssv;
+		this.HoTen = hoTen;
+		this.DiemGK = diemGK;
+		this.DiemCK = diemCK;
+		this.DiemKhac = diemKhac;
+		this.DiemTong = diemTong;
 	}
-	public int getMSSV() {
+	
+	public String getMSSV() {
 		return MSSV;
 	}
-	public void setMSSV(int mSSV) {
-		MSSV = mSSV;
+	public void setMSSV(String mssv) {
+		MSSV = mssv;
 	}
 	public String getHoTen() {
 		return HoTen;
@@ -50,6 +58,11 @@ public class Diem {
 	}
 	public void setDiemTong(float diemTong) {
 		DiemTong = diemTong;
+	}
+
+	@Override
+	public String toString() {
+		return this.MSSV+","+this.HoTen+","+this.DiemGK+","+this.DiemCK+","+this.DiemKhac+","+this.DiemTong;
 	}
 	
 }

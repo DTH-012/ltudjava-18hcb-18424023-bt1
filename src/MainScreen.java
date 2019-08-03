@@ -57,6 +57,13 @@ public class MainScreen extends JFrame implements ActionListener{
 		panel2.add(btnChangePwd = new JButton("Doi mat khau"));
 		panel2.add(btnLogout = new JButton ("Dang xuat"));
 		
+		if(currentUser.getLevel() == 1) {
+			btnImport.setEnabled(false);
+			btnAdd.setEnabled(false);
+			btnViewClass.setEnabled(false);
+			btnViewSchedule.setEnabled(false);
+		}
+		
 		btnImport.addActionListener(this);
 		btnAdd.addActionListener(this);
 		btnViewClass.addActionListener(this);

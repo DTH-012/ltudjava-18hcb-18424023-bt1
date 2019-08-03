@@ -21,4 +21,15 @@ public class BangDiem {
 	public void setDSDiem(ArrayList<Diem> dSDiem) {
 		DSDiem = dSDiem;
 	}
+	
+	public boolean ThemDiem(Diem newDiem) {
+		Diem diem = DSDiem.stream().filter(x -> 
+			x.getMSSV().equals(newDiem.getMSSV())).findFirst().orElse(null);
+		if(diem == null) {
+			DSDiem.add(newDiem);
+			return true;
+		}
+		
+		return false;
+	}
 }

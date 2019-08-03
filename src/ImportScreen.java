@@ -99,7 +99,8 @@ public class ImportScreen extends JFrame
 	        		generateTKBLopHoc(TKB.getTenLop());
         		}
         		else {
-        			
+        			bangDiem = fileData.readBangDiem(fileChoosen.getPath());
+	        		fileData.writeData("data\\BangDiem\\", bangDiem.getTenLop(), false, bangDiem.getDSDiem());
         		}
         		message = "Import thanh cong.";
         		JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",

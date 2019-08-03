@@ -102,4 +102,25 @@ public class FileData {
 		}
 		return users;
 	}
+	
+	public static BangDiem readBangDiem(String path) throws FileNotFoundException {
+		BangDiem bangDiem = new BangDiem();
+		File file = new File(path);
+		if(file.exists()) {
+			Scanner s = new Scanner(file);
+			bangDiem.setTenLop(file.getName().replaceFirst("[.][^.]+$", ""));
+			while(s.hasNextLine()) {
+				String line = s.nextLine();
+				String[] data = line.split(",");
+				Diem diem = new Diem(data[0],data[1],Float.parseFloat(data[2]),
+						Float.parseFloat(data[3]),Float.parseFloat(data[4]),
+						Float.parseFloat(data[5]));
+				if(!bangDiem.ThemDiem(diem)) {
+					return null;
+				}
+			}
+		}
+
+		return bangDiem;
+	}
 }
