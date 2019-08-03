@@ -32,6 +32,9 @@ public class Account {
 	public void setLevel(int level) {
 		Level = level;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return Username + "," + Password + "," + Level;
+	}
 }

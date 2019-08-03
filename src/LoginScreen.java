@@ -58,7 +58,7 @@ public class LoginScreen extends JFrame
 			String username = txtUsername.getText();
 			String password = txtPassword.getText();
 			try {
-				users = FileData.readLoginInfo("data\\Accounts\\accounts.csv");
+				users = FileData.readUsersInfo("data\\Accounts\\accounts.csv");
 				Account user = users.stream().filter(x -> 
 				x.getUsername().equals(username) && x.getPassword().equals(password))
 						.findFirst().orElse(null);
@@ -77,7 +77,14 @@ public class LoginScreen extends JFrame
 			} catch (FileNotFoundException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
-				message = "Du lieu bi loi.";
+				message = "Khong tim thay file";
+        		JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",
+        		        JOptionPane.ERROR_MESSAGE);
+			}
+			catch (Exception ex) {
+				// TODO Auto-generated catch block
+				ex.printStackTrace();
+				message = "Du lieu khong hop le.";
         		JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",
         		        JOptionPane.ERROR_MESSAGE);
 			}

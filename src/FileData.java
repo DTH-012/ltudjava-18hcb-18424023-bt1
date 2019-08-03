@@ -29,7 +29,7 @@ public class FileData {
 		return lopHoc;
 	}
 	
-	public <T> boolean writeData(String pathFolder,String fileName, boolean isAppend, 
+	public static <T> boolean writeData(String pathFolder,String fileName, boolean isAppend, 
 			ArrayList<T> DataList) throws IOException {
 		FileWriter fw;
 		try 
@@ -88,7 +88,7 @@ public class FileData {
 		return fileNames;
 	}
 	
-	public static ArrayList<Account> readLoginInfo(String path) throws FileNotFoundException{
+	public static ArrayList<Account> readUsersInfo(String path) throws FileNotFoundException{
 		ArrayList<Account> users = new ArrayList<Account>();
 		File file = new File(path);
 		if(file.exists()) {

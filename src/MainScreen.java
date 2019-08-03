@@ -2,6 +2,7 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -22,6 +23,7 @@ public class MainScreen extends JFrame implements ActionListener{
 	private Account currentUser;
 	private JButton btnChangePwd;
 	private JButton btnLogout;
+	private String message;
 
 	public MainScreen(Account user)
 	{
@@ -136,6 +138,34 @@ public class MainScreen extends JFrame implements ActionListener{
     		loginScreen.setVisible(true);
     		loginScreen.setResizable(false);
     		loginScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        }
+        else if(e.getSource() == btnChangePwd) {
+        	ArrayList<Account> users = new ArrayList<Account>();
+        	Account user = new Account();
+			try {
+				users = FileData.readUsersInfo("data\\Accounts\\accounts.csv");
+				user = users.stream().filter(x -> 
+						x.getUsername().equals(currentUser.getUsername()))
+						.findFirst().orElse(null);
+				if(user == null) {
+					message = "Du lieu nguoi dung khong ton tai.";
+	        		JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",
+	        		        JOptionPane.ERROR_MESSAGE);
+	        		return;
+				}
+			} catch (FileNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				message = "File du lieu nguoi dung bi loi.";
+        		JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",
+        		        JOptionPane.ERROR_MESSAGE);
+        		return;
+			}
+			
+        	ChangePwdScreen changePwdScreen = new ChangePwdScreen(user);
+        	changePwdScreen.setSize(450,120);
+        	changePwdScreen.setVisible(true);
+        	changePwdScreen.setResizable(false);
         }
     }
 	
