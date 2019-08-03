@@ -69,7 +69,7 @@ public class LoginScreen extends JFrame
 				}
 				else {
 					dispose();
-					MainScreen mainScreen = new MainScreen();
+					MainScreen mainScreen = new MainScreen(user);
 					mainScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 					mainScreen.setSize(700, 600);
 					mainScreen.setVisible(true);
