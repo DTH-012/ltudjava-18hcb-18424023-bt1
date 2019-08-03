@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,13 +21,11 @@ public class FileData {
 				String[] data = line.split(",");
 				SinhVien sv = new SinhVien(data[0],data[1],data[2],data[3]);
 				if(!lopHoc.ThemSV(sv)) {
-					file.exists();
 					return null;
 				}
 			}
 		}
 
-		file.exists();
 		return lopHoc;
 	}
 	
@@ -87,5 +86,20 @@ public class FileData {
 		}
 		
 		return fileNames;
+	}
+	
+	public static ArrayList<Account> readLoginInfo(String path) throws FileNotFoundException{
+		ArrayList<Account> users = new ArrayList<Account>();
+		File file = new File(path);
+		if(file.exists()) {
+			Scanner s = new Scanner(file);
+			while(s.hasNextLine()) {
+				String line = s.nextLine();
+				String[] data = line.split(",");
+				Account user = new Account(data[0],data[1],Integer.parseInt(data[2]));
+				users.add(user);
+			}
+		}
+		return users;
 	}
 }
