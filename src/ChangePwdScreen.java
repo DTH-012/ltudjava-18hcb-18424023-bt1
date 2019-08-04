@@ -83,6 +83,16 @@ public class ChangePwdScreen extends JFrame implements ActionListener {
 							message = "Cap nhat thanh cong";
 			        		JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",
 			        		        JOptionPane.INFORMATION_MESSAGE);
+
+			            	java.awt.Window win[] = java.awt.Window.getWindows(); 
+			            	for(int i=0;i<win.length;i++){ 
+			            		win[i].dispose(); 
+			            	}
+			            	LoginScreen loginScreen = new LoginScreen();
+			        		loginScreen.setSize(450, 100);
+			        		loginScreen.setVisible(true);
+			        		loginScreen.setResizable(false);
+			        		loginScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 						} catch (IOException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
