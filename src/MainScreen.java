@@ -70,6 +70,7 @@ public class MainScreen extends JFrame implements ActionListener{
 		btnViewSchedule.addActionListener(this);
 		btnChangePwd.addActionListener(this);
 		btnLogout.addActionListener(this);
+		btnViewResult.addActionListener(this);
 		
 	}
 	
@@ -133,6 +134,11 @@ public class MainScreen extends JFrame implements ActionListener{
     		ViewTKBScreen viewTKBScreen = new ViewTKBScreen();
     		viewTKBScreen.setSize(700, 600);
     		viewTKBScreen.setVisible(true);
+        }
+        else if(e.getSource() == btnViewResult) {
+        	ViewBDScreen viewBDScreen = new ViewBDScreen(currentUser);
+        	viewBDScreen.setSize(700, 600);
+        	viewBDScreen.setVisible(true);
         }
         else if(e.getSource() == btnLogout) {
         	java.awt.Window win[] = java.awt.Window.getWindows(); 
