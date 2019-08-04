@@ -120,7 +120,13 @@ public class AddingForm extends JFrame implements ActionListener {
         		tempClass.add(sv);
         		try {
 					fileData.writeData("data\\LopHoc\\", tenLop, true, tempClass);
-	        		message = "Them thanh cong.";
+					ArrayList<String> dsTenLopTheoMH = FileData.getFilenameInFolder("data\\LopHoc\\TheoMH\\");
+					for(String tenLopTheoMH:dsTenLopTheoMH) {
+						if(tenLopTheoMH.contains(tenLop)) {
+							fileData.writeData("data\\LopHoc\\TheoMH\\", tenLopTheoMH, true, tempClass);
+						}
+					}
+					message = "Them thanh cong.";
 	        		JOptionPane.showMessageDialog(new JFrame(), message, "Dialog",
 	        		        JOptionPane.INFORMATION_MESSAGE);
 				} catch (IOException e1) {
